@@ -59,7 +59,7 @@ export function GeneIndex() {
     .sort((a, b) => (sort === 'tau' ? b.tau - a.tau : sort === 'p' ? (a.best?.padj ?? 2) - (b.best?.padj ?? 2) : a.g.localeCompare(b.g)));
   return (
     <>
-      <PageHead title="Gene atlas" lede={`${PANEL.length} genes used across the platform's analyses. Each has a genome page with live Ensembl annotation and its expression in the demonstration dataset.`}>
+      <PageHead bg="hic" title="Gene atlas" lede={`${PANEL.length} genes used across the platform's analyses. Each has a genome page with live Ensembl annotation and its expression in the demonstration dataset.`}>
         <div className="head-badges"><Badge tone="verified">Genome: live Ensembl</Badge><DemoStamp label="Expression: simulated" /><span className="small muted">The 400 synthetic genes used for differential expression (SIM0001 onward) have no genomic location and are not listed.</span></div>
       </PageHead>
       <Section>

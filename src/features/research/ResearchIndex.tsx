@@ -9,7 +9,7 @@ export function ResearchIndex({ domain }: { domain: string | null }) {
   const list = active ? PROJECTS.filter((p) => p.domainIds.includes(active.id)) : PROJECTS;
   return (
     <>
-      <PageHead title="Research" lede="The work is organised by biological question, then computational method, then discovery, then evidence. Each project below follows the same twelve-part structure.">
+      <PageHead bg="tissue" title="Research" lede="The work is organised by biological question, then computational method, then discovery, then evidence. Each project below follows the same twelve-part structure.">
         <div className="chips" role="group" aria-label="Filter by domain">
           <Link to="/research" className={`chip${!active ? ' is-active' : ''}`}>All domains</Link>
           {DOMAINS.map((d) => <Link key={d.id} to={`/research?domain=${d.id}`} className={`chip${active?.id === d.id ? ' is-active' : ''}`}>{d.title}</Link>)}

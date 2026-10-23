@@ -8,7 +8,7 @@ client or result appears unless it is supplied and verified.
 
 ```bash
 npm install
-npm run build        # writes dist/index.html, a single self-contained file
+npm run build        # writes dist/index.html (self-contained app) plus dist/bg/ background images
 npm run typecheck    # tsc --noEmit
 npm run selftest     # statistics validated against known values; analyses recover planted structure
 # open dist/index.html in a browser (no server needed)
@@ -32,6 +32,18 @@ type check and reports errors without blocking deployment.
 
 GitHub Pages is meant for non-commercial sites. When Vin-OmicsLab starts offering paid services, move hosting to a host
 that allows commercial use (Cloudflare Pages can deploy from this same repository).
+
+## Background images
+
+The hero, page banners and homepage strip use generated scientific illustrations in `public/bg/` (WebP, about 830 KB in
+total; each page loads only what it uses). They are drawn by code, deterministically from fixed seeds, in the style of
+multiplex immunofluorescence, H&E histology, Visium spatial transcriptomics, a Hi-C contact map and genome-browser tracks.
+They are illustrations, not data, and the site says so in the hero and footer. Dark themes show the fluorescence image,
+light themes the H&E image. Hi-C and track images are alpha masks tinted by the theme colours.
+
+To regenerate (dev-only; needs Playwright and sharp, which the site build does not use):
+`node scripts/backgrounds/render.mjs [tissue-if tissue-he visium hic tracks]`. Drawing code: `scripts/backgrounds/draw.js`.
+Note: the masked images (Hi-C, tracks) only load over http(s); opened from a local file, those two backgrounds are skipped.
 
 ## Structure
 

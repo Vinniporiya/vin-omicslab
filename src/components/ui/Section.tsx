@@ -11,9 +11,11 @@ export function SectionHead({ title, lede, aside }: { title: string; lede?: stri
     </header>
   );
 }
-export function PageHead({ title, lede, children }: { title: string; lede?: string; children?: ReactNode }) {
+/** Banner backgrounds: generated scientific illustrations (scripts/backgrounds). Decorative, so hidden from assistive tech. */
+export type HeadBg = 'tissue' | 'visium' | 'hic' | 'tracks';
+export function PageHead({ title, lede, children, bg }: { title: string; lede?: string; children?: ReactNode; bg?: HeadBg }) {
   return (
-    <div className="page-head"><div className="container">
+    <div className={`page-head${bg ? ` has-bg bg-${bg}` : ''}`}><div className="container">
       <h1>{title}</h1>{lede && <p className="lede">{lede}</p>}{children}
     </div></div>
   );

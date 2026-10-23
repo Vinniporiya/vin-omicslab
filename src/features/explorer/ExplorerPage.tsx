@@ -10,7 +10,7 @@ export function ExplorerPage({ view, query }: { view?: string; query?: URLSearch
   const { Component } = active;
   return (
     <>
-      <PageHead title="Research Explorer" lede="Explore analyses on a demonstration dataset. Every figure carries its dataset, method, test, parameters, interpretation, limitations and evidence.">
+      <PageHead bg="visium" title="Research Explorer" lede="Explore analyses on a demonstration dataset. Every figure carries its dataset, method, test, parameters, interpretation, limitations and evidence.">
         <div className="head-badges"><Badge tone="sim">All data simulated</Badge><span className="small muted">Datasets load through a provider so real data can replace the simulation without changing any view.</span></div>
       </PageHead>
       <div className="container explorer">

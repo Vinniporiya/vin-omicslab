@@ -11,7 +11,7 @@ export function MethodsIndex() {
   const list = METHODS.filter((m) => (!tag || m.tags.includes(tag)) && (!needle || `${m.title} ${m.problem} ${m.tags.join(' ')} ${m.failures.join(' ')}`.toLowerCase().includes(needle)));
   return (
     <>
-      <PageHead title="Methods" lede="A searchable library of computational biology methods: the problem each solves, when to use it, what it assumes, how it fails, and a workflow with code.">
+      <PageHead bg="tracks" title="Methods" lede="A searchable library of computational biology methods: the problem each solves, when to use it, what it assumes, how it fails, and a workflow with code.">
         <div className="method-tools">
           <label className="field grow"><span>Search methods</span><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Try: pseudoreplication, doublets, permutation" /></label>
           <div className="chips" role="group" aria-label="Filter by topic">

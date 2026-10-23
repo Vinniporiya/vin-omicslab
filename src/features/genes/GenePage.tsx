@@ -224,7 +224,7 @@ export function GenePage({ symbol }: { symbol: string }) {
   const i = PANEL.indexOf(sym), prev = PANEL[(i - 1 + PANEL.length) % PANEL.length], next = PANEL[(i + 1) % PANEL.length];
   return (
     <>
-      <PageHead title={sym}>
+      <PageHead bg="hic" title={sym}>
         <p className="crumb"><Link to="/genes">Gene atlas</Link> / {GroupLabel(prog.group)}</p>
         <GeneDescription symbol={sym} />
         <div className="head-badges"><Badge tone="verified">Genome: live Ensembl annotation</Badge><DemoStamp label="Expression: simulated" /></div>

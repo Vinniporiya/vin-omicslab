@@ -1,7 +1,7 @@
 // Bundles src/ into a single self-contained dist/index.html (no runtime network dependency
 // except optional Google Fonts). The same bundle can be hosted anywhere as a static page.
 import { context, build } from 'esbuild';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 
 const watch = process.argv.includes('--watch');
 
@@ -36,6 +36,8 @@ const inlineHtml = {
 </html>`;
       mkdirSync('dist', { recursive: true });
       writeFileSync('dist/index.html', html);
+      // static assets (background images) are served next to index.html, so relative url('bg/...') works on any base path
+      if (existsSync('public')) cpSync('public', 'dist', { recursive: true });
       console.log(`dist/index.html  ${(html.length / 1024).toFixed(0)} KB`);
     });
   },
@@ -54,6 +56,8 @@ const options = {
   legalComments: 'none',
   define: { 'process.env.NODE_ENV': watch ? '"development"' : '"production"' },
   loader: { '.css': 'css' },
+  // background images live in public/bg and are copied beside index.html; CSS keeps the relative url()
+  external: ['bg/*'],
   plugins: [inlineHtml],
   logLevel: 'info',
 };

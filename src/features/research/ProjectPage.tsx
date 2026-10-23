@@ -14,7 +14,7 @@ export function ProjectPage({ slug }: { slug: string }) {
   const methods = p.methodSlugs.map((s) => METHODS.find((m) => m.slug === s)).filter((m): m is NonNullable<typeof m> => !!m);
   return (
     <>
-      <PageHead title={p.title} lede={p.oneLine}>
+      <PageHead bg="tissue" title={p.title} lede={p.oneLine}>
         <p className="crumb"><Link to="/research">Research</Link> / {p.domainIds.map((id) => DOMAINS.find((d) => d.id === id)?.title).join(', ')}</p>
         <div className="head-badges"><Badge tone="placeholder">Awaiting author input</Badge><span className="small muted">Text marked draft is a neutral framing of the question. It contains no result. Every other section stays empty until Vinod Kumar supplies verified content.</span></div>
       </PageHead>

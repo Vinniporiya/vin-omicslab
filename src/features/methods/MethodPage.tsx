@@ -11,7 +11,7 @@ export function MethodPage({ slug }: { slug: string }) {
   const List = ({ items }: { items: string[] }) => <ul>{items.map((i) => <li key={i}>{i}</li>)}</ul>;
   return (
     <>
-      <PageHead title={m.title} lede={m.problem}><p className="crumb"><Link to="/methods">Methods</Link> / {m.tags.join(', ')}</p></PageHead>
+      <PageHead bg="tracks" title={m.title} lede={m.problem}><p className="crumb"><Link to="/methods">Methods</Link> / {m.tags.join(', ')}</p></PageHead>
       <Section>
         <div className="method-page">
           <article>

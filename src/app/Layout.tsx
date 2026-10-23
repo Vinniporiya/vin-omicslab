@@ -47,7 +47,7 @@ export function Footer() {
           <p className="small muted">{SITE.tagline}<br />Founded by {SITE.founder}.</p>
         </div>
         <nav aria-label="Footer" className="footer-nav">{NAV.map((n) => <Link key={n.href} to={n.href}>{n.label}</Link>)}<Link to="/genes">Gene atlas</Link></nav>
-        <p className="small muted footer-note">Demonstration datasets are simulated by a seeded generator and are labelled wherever they appear. Publications, affiliations, clients and results are listed only when supplied and verified.</p>
+        <p className="small muted footer-note">Demonstration datasets are simulated by a seeded generator and are labelled wherever they appear. Publications, affiliations, clients and results are listed only when supplied and verified. Background images are generated illustrations in the style of microscopy and genomics data; they are not data.</p>
       </div>
     </footer>
   );

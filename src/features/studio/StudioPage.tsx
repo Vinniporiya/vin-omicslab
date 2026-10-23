@@ -145,7 +145,7 @@ export function StudioPage() {
 
   return (
     <>
-      <PageHead title="Analysis Studio" lede="From a question to a reproducible record: dataset, plan, workflow, execution, quality control, results, interpretation, report and reproducibility.">
+      <PageHead bg="tracks" title="Analysis Studio" lede="From a question to a reproducible record: dataset, plan, workflow, execution, quality control, results, interpretation, report and reproducibility.">
         <div className="head-badges"><Badge tone="sim">Simulated execution, simulated data</Badge>{approved ? <Badge tone="verified">Approved plan loaded</Badge> : <span className="small muted">No approved plan yet. <Link to="/agent" className="link-strong">Ask the Science Agent</Link></span>}</div>
       </PageHead>
       <Section>
