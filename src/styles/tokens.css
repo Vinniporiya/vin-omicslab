@@ -1,0 +1,70 @@
+/*
+ * Design tokens. Palette is taken from histology: hematoxylin (nuclear blue-violet) for surfaces and ink,
+ * eosin (cytoplasmic rose) as the single interface accent. Data colours live with the data (cell types, conditions).
+ * :root holds the light theme; dark applies via the OS preference unless the site sets data-theme, and via data-theme="dark".
+ * Themes: dark (Hematoxylin, default), light (Eosin), journal, contrast. JS always sets data-theme; the media query only
+ * covers the moment before scripts run.
+ */
+:root {
+  color-scheme: light;
+  --bg: #f8f6fa; --surface: #ffffff; --surface-2: #efecf3;
+  --line: #ddd8e5; --line-strong: #bdb6cb;
+  --text: #1f1b2b; --text-2: #4a4560; --muted: #6a6480;
+  --accent: #b03a60; --accent-ink: #ffffff; --accent-soft: #f7e4eb;
+  --focus: #5b4fd1; --code-bg: #f3f0f7;
+  --ev-observed: #3e3a52; --ev-statistical: #1c7761; --ev-literature: #2c5cb0; --ev-inference: #8f610a; --ev-hypothesis: #7449b0;
+  --st-pass: #1c7761; --st-warn: #8f610a; --st-review: #b04e14; --st-fail: #b3261e;
+  --font-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #181622; --surface: #211e2d; --surface-2: #2a2639;
+    --line: #37324a; --line-strong: #4d4665;
+    --text: #edeaf3; --text-2: #c4bfd3; --muted: #9b95b0;
+    --accent: #e68ca8; --accent-ink: #2a0f1a; --accent-soft: #3a2230;
+    --focus: #9d93ff; --code-bg: #141220;
+    --ev-observed: #cfcadd; --ev-statistical: #5fc9a9; --ev-literature: #7fa6ee; --ev-inference: #e0b04e; --ev-hypothesis: #b594e8;
+    --st-pass: #5fc9a9; --st-warn: #e0b04e; --st-review: #f0925a; --st-fail: #f07a72;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #181622; --surface: #211e2d; --surface-2: #2a2639;
+  --line: #37324a; --line-strong: #4d4665;
+  --text: #edeaf3; --text-2: #c4bfd3; --muted: #9b95b0;
+  --accent: #e68ca8; --accent-ink: #2a0f1a; --accent-soft: #3a2230;
+  --focus: #9d93ff; --code-bg: #141220;
+  --ev-observed: #cfcadd; --ev-statistical: #5fc9a9; --ev-literature: #7fa6ee; --ev-inference: #e0b04e; --ev-hypothesis: #b594e8;
+  --st-pass: #5fc9a9; --st-warn: #e0b04e; --st-review: #f0925a; --st-fail: #f07a72;
+}
+:root[data-theme="light"] { color-scheme: light; }
+
+/* Journal: warm paper, ink and a muted oxblood accent. Designed for figures and print. */
+:root[data-theme="journal"] {
+  color-scheme: light;
+  --bg: #fbf8f1; --surface: #fffdf8; --surface-2: #efe9dc;
+  --line: #ddd5c3; --line-strong: #bfb49c;
+  --text: #1b1a17; --text-2: #45413a; --muted: #6b6559;
+  --accent: #8e2b2b; --accent-ink: #fffdf8; --accent-soft: #f3e3dc;
+  --focus: #1f4fa8; --code-bg: #f4efe4;
+  --ev-observed: #3a3833; --ev-statistical: #1d6a57; --ev-literature: #234f9a; --ev-inference: #7f5605; --ev-hypothesis: #66408f;
+  --st-pass: #1d6a57; --st-warn: #7f5605; --st-review: #9d4312; --st-fail: #a32020;
+}
+/* High contrast: true black, white text, no low-contrast greys. */
+:root[data-theme="contrast"] {
+  color-scheme: dark;
+  --bg: #000000; --surface: #0b0b0b; --surface-2: #1c1c1c;
+  --line: #6e6e6e; --line-strong: #a8a8a8;
+  --text: #ffffff; --text-2: #f0f0f0; --muted: #d6d6d6;
+  --accent: #ffa3c4; --accent-ink: #000000; --accent-soft: #3a1626;
+  --focus: #ffe14d; --code-bg: #0b0b0b;
+  --ev-observed: #ffffff; --ev-statistical: #6ff0c6; --ev-literature: #9ec3ff; --ev-inference: #ffd166; --ev-hypothesis: #d6b8ff;
+  --st-pass: #6ff0c6; --st-warn: #ffd166; --st-review: #ffad7a; --st-fail: #ff8f87;
+}
+:root[data-theme="contrast"] :focus-visible { outline-width: 3px; outline-offset: 3px; }
+:root[data-theme="contrast"] .ev-row.is-empty .ev-body, :root[data-theme="contrast"] .pf-empty { font-style: normal; }
+:root[data-theme="journal"] body { font-feature-settings: "kern", "liga", "onum"; }
+:root[data-theme="journal"] .table .num { font-feature-settings: "tnum", "lnum"; }
